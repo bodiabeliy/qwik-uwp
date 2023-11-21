@@ -65,12 +65,14 @@ export const BtnLanguage = component$<BtnLanguageProps>(
         `}
       >
         <button
+        style={{transition:"1.5s"}}
           onClick$={() => (showDropdown.value = !showDropdown.value)}
           class={`flex-center flex-col gap-[6px] rounded-full
             ${showDropdown.value ? "mx-[6px] my-2" : ""}
           `}
         >
           <div
+
             class={`flex-center h-9 w-9 ${
               showDropdown.value ? "rounded-full border" : ""
             }`}
