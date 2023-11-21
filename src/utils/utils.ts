@@ -55,10 +55,3 @@ export const  activeClassToggler = (elementRef:Signal<HTMLButtonElement| undefin
 
 
 
-export function blobToBase64(blob) {
-return new Promise((resolve, reject) => {
-const reader = new FileReader();
-
-//     reader.readAsDataURL(blob);
-//   });
-// }
