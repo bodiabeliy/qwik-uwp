@@ -1,3 +1,4 @@
+import { Signal } from "@builder.io/qwik";
 import { log } from "console";
 
 export const formatTime = (sec: number) => {
@@ -22,7 +23,7 @@ export const toBase64 = (file: File | any): Promise<string | ArrayBuffer | null>
 )
 
 
-export const  activeClassToggler = (elementRef:any, activeClass:string) => {
+export const  activeClassToggler = (elementRef:Signal<HTMLButtonElement| undefined>, activeClass:string) => {
   const button =elementRef.value?.className.split(" ")[0];
   
   const menuBtn = document.querySelector(`.${button}`);
