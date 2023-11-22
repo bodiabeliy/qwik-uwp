@@ -1,6 +1,13 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useVisibleTask$ } from "@builder.io/qwik";
 
 export const UnityButton = component$(() => {
+
+    useVisibleTask$(() => {
+        // const animateMove = ref.value.querySelector(".unityImage");
+        // animateMove.setAttribute("filter", `url(#wavy)`);
+
+    });
+
   return (
     <>
     <svg
@@ -8,14 +15,12 @@ export const UnityButton = component$(() => {
       height="77"
       viewBox="0 0 96 77"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
     >
          <filter id="wavy">
-            <feTurbulence X="0" y="0" baseFrequency="0.009" numOctaves="5" seed="2">
-            <animate attributeName="baseFrequency" dur="10s" values="0.02;0.005;0.02" repeatCount="indefinite"></ animate>
+            <feTurbulence X="0" y="0" baseFrequency="0.09" numOctaves="3" seed="1">
+            <animate attributeName="baseFrequency" dur="7s" values="0.002;0.005;0.002" repeatCount="indefinite"></ animate>
             </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" scale="30"></feDisplacementMap>
+            <feDisplacementMap in="SourceGraphic" scale="50"></feDisplacementMap>
         </filter>
       <g style="mix-blend-mode:plus-lighter">
         <rect
