@@ -40,7 +40,7 @@ export default component$(() => {
   useVisibleTask$(({track}) => {
     track(() => isDialogListBig.value)
     const callback = function (entries:IntersectionObserverEntry[]) {      
-      if (entries[0].intersectionRect.y <=360) {
+      if (entries[0].intersectionRect.y <=150) {
         isDialogListBig.value = true
         
       }
