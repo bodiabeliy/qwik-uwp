@@ -157,7 +157,7 @@ export default component$(() => {
           {messages.data.map((el, i) => (
             <MessageRow {...el} key={i} />
           ))}
-          <div ref={lastElementRef} class="h-[20px] bg-transparent"></div>
+          <div ref={lastElementRef} class="h-[0px] bg-transparent"></div>
           </div>
           {isDialogListBig.value == true && <BtnSrollDown ref={lastElementRef}></BtnSrollDown>}
 

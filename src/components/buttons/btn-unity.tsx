@@ -8,12 +8,11 @@ export const BtnUnity = component$<BtnUnityProps>((props) => {
   {
     props;
   }
-  const buttonRef =useSignal<HTMLButtonElement|any>()
 
 
   
   return (
-    <button ref={buttonRef} class="unityImage rounded-full mb-10">
+    <button class="unityImage rounded-full mb-10">
       <UnityButton />
     </button>
   );

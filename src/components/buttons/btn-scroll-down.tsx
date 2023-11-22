@@ -14,7 +14,7 @@ export const BtnSrollDown = component$<Props>(({ref}) => {
   });
   
   return (
-    <button class="w-full h-7 w-7" onClick$={moveToDown}>
+    <button class="w-full h-7 w-7 absolute" onClick$={moveToDown}>
       <ArrowDown />
     </button>
   );
