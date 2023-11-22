@@ -27,7 +27,7 @@ export const MessageRow = component$<TMessage>((props) => {
       <ImageUnity class="row-span-2 h-6 w-6 shrink-0" />
 
       <div class="flex flex-col gap-2">
-        <span>{content}</span>
+        <span class="mr-5">{content}</span>
 
         {base64AudioData && <AudioPlayer base64AudioData={base64AudioData} />}
       </div>
