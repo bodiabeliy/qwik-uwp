@@ -1,4 +1,4 @@
-.unityImage::before {
+.unityImage:before {
     content: "";
     position: absolute;
     font-size: 3em;
@@ -9,10 +9,13 @@
     border-radius: 50%;
     width: 30%;
     height: 100%;
-    transition: 1.5s;
+    animation: pulse 2s linear infinite;
+}
+.unityImage {
+    filter: url(#wavy);
 }
 
-.unityImage:is(.is-active) {
+/* .unityImage:is(.is-active) {
     transition: 1.5s;
     -webkit-box-shadow: 0px -10px 17px -1px rgba(147, 99, 253, 1);
     -moz-box-shadow: 0px -10px 17px -1px rgba(147, 99, 253, 1);
@@ -24,7 +27,7 @@
     background-color: rgba(147, 99, 253, 1);
     animation: pulse 2s linear infinite;
 
-}
+} */
 
 @media screen and (max-width:576px) {
     .unityImage::before {

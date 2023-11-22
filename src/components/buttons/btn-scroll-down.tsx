@@ -8,18 +8,13 @@ interface Props {
 export const BtnSrollDown = component$<Props>(({ref}) => {
 
 
-  const moveToDown = $(() => {
-    console.log("mowe is", ref);
-    
-    window.scrollTo({
-      top : ref.value?.getBoundingClientRect().bottom, 
-      left : 0,
-      behavior : "smooth"
-    })
-  
+  const moveToDown = $(() => {    
+    ref.value.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+
   });
+  
   return (
-    <button class="w-full h-7 w-7" onClick$={[moveToDown]}>
+    <button class="w-full h-7 w-7" onClick$={moveToDown}>
       <ArrowDown />
     </button>
   );
