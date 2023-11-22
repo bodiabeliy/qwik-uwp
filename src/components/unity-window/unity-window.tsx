@@ -1,6 +1,8 @@
 import {
   $,
+  NoSerialize,
   component$,
+  noSerialize,
   useSignal,
   useStore,
   useVisibleTask$,
@@ -19,6 +21,7 @@ import * as btns from "../buttons";
 import * as icons from "../icons";
 import { MessageRow } from "./message-row";
 import { TextBlock } from "./text-block";
+import { BtnSrollDown } from "../buttons/btn-scroll-down";
 
 export default component$(() => {
   const messages = useStore<{ data: TMessage[] }>({ data: [] });
@@ -27,6 +30,26 @@ export default component$(() => {
   const isWindowOpened = useSignal(true);
   const isFetching = useSignal(false);
   const currentLang = useSignal<TLangCode>("en_GB");
+
+  const lastElementRef = useSignal<Element | any>();
+  const observerRef = useSignal<NoSerialize<IntersectionObserver>>();
+  const isDialogListBig = useSignal<boolean>(false);
+
+  // console.log("isDialogListBig", isDialogListBig);
+  
+  useVisibleTask$(({track}) => {
+    track(() => isDialogListBig.value)
+    const callback = function (entries:IntersectionObserverEntry[]) {      
+      if (entries[0].intersectionRect.y <=360) {
+        isDialogListBig.value = true
+        
+      }
+      else isDialogListBig.value = false
+    };
+    observerRef.value = noSerialize(new IntersectionObserver(callback));
+    observerRef.value && observerRef.value.observe(lastElementRef.value);
+  });
+
 
   const sendTextMessage = $(async (message: string) => {
     isFetching.value = true;
@@ -114,7 +137,7 @@ export default component$(() => {
       >
         <div class="relative z-[2] mx-[5px] mt-[5px] flex h-20 items-center justify-evenly rounded-[calc(24px-1px)] bg-neutral-900 text-white">
           <btns.BtnSound isSoundEnabled={isSoundEnabled} />
-          <btns.BtnUnity />
+           <btns.BtnUnity />
 
           <div class="relative h-9 w-[84px]">
             <btns.BtnLanguage class="absolute" currentLang={currentLang} />
@@ -127,13 +150,18 @@ export default component$(() => {
         </div>
 
         <div
-          class="flex h-[360px] flex-col justify-end gap-4 overflow-y-auto px-5 py-3 transition-all"
+          class="flex h-[360px] flex-col justify-end gap-4  px-5 py-3 transition-all"
           ref={chatRef}
         >
+          <div class="overflow-y-auto h-full">
           {messages.data.map((el, i) => (
             <MessageRow {...el} key={i} />
           ))}
+          <div ref={lastElementRef} class="h-[20px] bg-transparent"></div>
+          </div>
+          {isDialogListBig.value == true && <BtnSrollDown ref={lastElementRef}></BtnSrollDown>}
 
+          
           {isFetching.value && <icons.IconLoader />}
         </div>
 

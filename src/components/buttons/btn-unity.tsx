@@ -9,7 +9,7 @@ export const BtnUnity = component$<BtnUnityProps>((props) => {
     props;
   }
   const buttonRef =useSignal<HTMLButtonElement|undefined>()
-  const activeClassToggle = $(() =>buttonRef && activeClassToggler(buttonRef, "is-active"));
+  const activeClassToggle = $(() =>buttonRef && activeClassToggler("unityImage", "is-active"));
 
   
   return (

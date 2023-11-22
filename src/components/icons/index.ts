@@ -1,4 +1,5 @@
 export * from "./arrow-up";
+export * from "./arrow-down";
 export * from "./flag-de";
 export * from "./flag-dk";
 export * from "./flag-es";

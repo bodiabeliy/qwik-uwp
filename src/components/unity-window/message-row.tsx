@@ -9,7 +9,7 @@ export const MessageRow = component$<TMessage>((props) => {
   const isCustomer = from === "customer";
 
   return isCustomer ? (
-    <div class="flex gap-2 self-end text-sm text-[#DEDEDE]">
+    <div class="flex gap-2 justify-end text-sm text-[#DEDEDE] ">
       <div class="flex flex-col gap-2">
         <span>{content}</span>
 

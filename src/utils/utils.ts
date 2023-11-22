@@ -35,10 +35,9 @@ export const toBase64 = (
 //     reader.onerror = () => {
 //       reject(new Error("Error reading Blob as base64"));
 //     };
-export const  activeClassToggler = (elementRef:Signal<HTMLButtonElement| undefined>, activeClass:string) => {
-  const button =elementRef.value?.className.split(" ")[0];
+export const  activeClassToggler = (triggeredClassName:string, activeClass:string) => {
   
-  const menuBtn = document.querySelector(`.${button}`);
+  const menuBtn = document.querySelector(`.${triggeredClassName}`);
 
   let isMenuOpen = false;
 
