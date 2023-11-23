@@ -1,12 +1,21 @@
-import { component$, type QwikIntrinsicElements } from "@builder.io/qwik";
+import { component$,  } from "@builder.io/qwik";
 
-export const ArrowDown = component$((props: QwikIntrinsicElements["svg"]) => {
+interface ArrowDownProps {
+  svgClass:string;
+  width?:string;
+  height?:string;
+  viewBox?:string
+}
+
+export const ArrowDown = component$((props: ArrowDownProps ) => {
+  const {svgClass, width, height, viewBox} = props
+    
   return (
     <svg
-      class="m-auto"
-      width="46"
-      height="46"
-      viewBox="0 0 46 46"
+      class={svgClass}
+      width={width}
+      height={height}
+      viewBox={viewBox}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
