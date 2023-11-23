@@ -89,20 +89,20 @@ body {
   }
 }
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 2px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: transparent; 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #9363fd; 
+  background:linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)) ; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #714bc2; 
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)) ; 
 }

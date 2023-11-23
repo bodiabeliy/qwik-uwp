@@ -27,7 +27,7 @@ export default component$(() => {
   const messages = useStore<{ data: TMessage[] }>({ data: [] });
   const chatRef = useSignal<Element>();
   const isSoundEnabled = useSignal(true);
-  const isWindowOpened = useSignal(true);
+  const isWindowOpened = useSignal(false);
   const isFetching = useSignal(false);
   const currentLang = useSignal<TLangCode>("en_GB");
 
@@ -131,11 +131,11 @@ export default component$(() => {
           "gradient-bd-purple-bg-dark fixed bottom-2.5 left-1 right-1 max-w-lg overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 min-[478px]:bottom-[52px] min-[478px]:left-2 min-[478px]:right-2 min-[528px]:left-auto min-[528px]:w-full md:bottom-[88px] md:right-[71px]",
           {
             "max-h-[calc(100%-16px)]": isWindowOpened.value,
-            "max-h-[85px]": !isWindowOpened.value,
+            "max-h-[70px]": !isWindowOpened.value,
           },
         ]}
       >
-        <div class="relative z-[2] mx-[5px] mt-[5px] flex h-20 items-center justify-evenly rounded-[calc(24px-1px)] bg-neutral-900 text-white">
+        <div class="relative z-[2] mx-[5px] mt-[5px] flex h-15 items-center justify-evenly rounded-[calc(24px-1px)] bg-neutral-900 text-white">
           <btns.BtnSound isSoundEnabled={isSoundEnabled} />
            <btns.BtnUnity />
 
@@ -150,19 +150,19 @@ export default component$(() => {
         </div>
 
         <div
-          class="flex h-[360px] flex-col justify-end gap-4  px-5 py-3 transition-all"
+          class="flex h-[360px] flex-col justify-end gap-4  px-5 py-3 transition-all z-10"
           ref={chatRef}
         >
           <div class="overflow-y-auto h-full">
           {messages.data.map((el, i) => (
             <MessageRow {...el} key={i} />
           ))}
+          {isFetching.value && <icons.IconLoader />}
           <div ref={lastElementRef} class="h-[0px] bg-transparent"></div>
           </div>
           {isDialogListBig.value == true && <BtnSrollDown ref={lastElementRef}></BtnSrollDown>}
 
           
-          {isFetching.value && <icons.IconLoader />}
         </div>
 
         <div
